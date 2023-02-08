@@ -1,7 +1,19 @@
 # Enzyme
 
-Enzyme is an jailbreak-free iOS modding framework that allows you to statically patch and hook iOS apps. This repository contains an example using Enzyme. For modifying this, check out the CMakeLists.txt file, the patcher/main.py file, the patcher/bootstrap.asm file, and the src folder.
+Enzyme is a jailbreak-free iOS code injection framework that allows you to statically inject code into iOS apps. Enzyme works using a byte-patching and code-generation system working together to allow you to hook functions.
 
-## Building Yourself
+## How do i use this?
 
-This Enzyme example requires that you provide an unzipped IPA file in the assets/IPA folder. For copyright reasons, you must provide your own. You must have CMake, Python 3, and an iOS SDK installed.
+### Enzyme is currently untested on windows. If you encounter issues please contact me on discord: camila314#4124
+
+Enzyme is a CMake utility. You include the `Enzyme.cmake` file into your own project. Check the example folder for how to set everything up. Hopefully documentation is coming soon, but I don't like writing docs so it might take a little bit.
+
+## Are there dependencies?
+
+Yes! It has the following dependencies:
+	- CMake 3.2+
+	- Python 3
+	- An iOS SDK
+	- Clang
+	- Rsync (for now)
+

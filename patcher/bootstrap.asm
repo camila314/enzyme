@@ -50,21 +50,21 @@ getfindhook:
 	stp x19, x20, [sp, #0x10]
 
 	; Check if it's cached
-	adrp x20, adr@0x7cd000
-	ldr x0, [x20, #0xb90]
+	adrp x20, adr@{cache_page}
+	ldr x0, [x20, #{cache_offset}]
 	cbnz x0, $findhookend
 
 	; Call dlopen
-	adrp x0, adr@0x5ef000
-	add x0, x0, #0x41 ; "@executable_path/hook.dylib"
+	adrp x0, adr@{data1_page}
+	add x0, x0, #{data1_offset} ; "@executable_path/hook.dylib"
 	mov w1, #0x2
-	bl @0x5ae02c ; dlopen
+	bl @{dlopen_stub} ; dlopen
 	; Call dlsym
-	adrp x1, adr@0x5ef000
-	add x1, x1, #0x35 ; "findthehook"
-	bl @0x5ae038 ; dlsym
+	adrp x1, adr@{data2_page}
+	add x1, x1, #{data2_offset} ; "findthehook"
+	bl @{dlsym_stub} ; dlsym
 	; Store in cache
-	str x0, [x20, #0xb90]
+	str x0, [x20, #{cache_offset}]
 findhookend:
 	ldp x19, x20, [sp, #0x10]
 	ldp x29, x30, [sp], #0x20
