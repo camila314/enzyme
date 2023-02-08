@@ -11,9 +11,10 @@ Enzyme is a CMake utility. You include the `Enzyme.cmake` file into your own pro
 ## Are there dependencies?
 
 Yes! It has the following dependencies:
-	- CMake 3.2+
-	- Python 3
-	- An iOS SDK
-	- Clang
-	- Rsync (for now)
+
+- CMake 3.2+
+- Python 3
+- An iOS SDK
+- Clang
+- Rsync (for now)
 
