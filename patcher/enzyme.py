@@ -5,8 +5,8 @@ import os
 def setup(code_caves, data_caves, bss_cave, dlopen_stub, dlsym_stub):
     p = patcher.Patcher(sys.argv[1])
 
-    p.bin_patch(data_caves[0], b"findthehook")
-    p.bin_patch(data_caves[1], b"@executable_path/hook.dylib")
+    p.bin_patch(data_caves[0], b"@executable_path/hook.dylib")
+    p.bin_patch(data_caves[1], b"findthehook")
 
     for i in code_caves:
         p.code_cave(i[0], i[1])
