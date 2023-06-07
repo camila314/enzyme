@@ -5,11 +5,13 @@ import os
 import re
 
 template_part1 = """
-inline long original_{name} = (0, getBase() + {addr} + 8);
+extern int exists_{name};
+inline long original_{name} = (getBase() + {addr} + exists_{name});
 __attribute__((naked)) inline void final_{name}() {{
 	__asm volatile (
         "{string}"
         "ldr x9, %[t]\\n"
+        "mov x8, x10\\n"
         "br x9"
         :
         : [t] "m" (original_{name})
@@ -20,6 +22,7 @@ __attribute__((naked)) inline void final_{name}() {{
 	sig_{name}(__VA_ARGS__); \\
 	static cast_fn<decltype(sig_{name}), void(__VA_ARGS__)>::return_t real_{name}(__VA_ARGS__); \\
 	static cast_fn<decltype(sig_{name}), void(__VA_ARGS__)>::fn_t* {name}; \\
+	inline int exists_{name} = 8; \\
 	__attribute__((constructor)) static void ctor_{name}() {{ \\
 		if (hookDB == nullptr) {{ \\
 			hookDB = new hookDB_t(); \\

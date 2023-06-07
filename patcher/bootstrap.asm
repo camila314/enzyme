@@ -17,6 +17,7 @@ main:
 	mov x24, x5
 	mov x25, x6
 	mov x27, x13
+	mov x28, x8
 	fmov d8, d0
 
 	; Get findthehook
@@ -34,6 +35,7 @@ main:
 	mov x4, x23
 	mov x5, x24
 	mov x6, x25
+	mov x8, x28
 	fmov d0, d8
 	blr x10
 	; Cleanup
