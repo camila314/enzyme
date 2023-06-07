@@ -8,6 +8,7 @@ template_part1 = """
 extern int exists_{name};
 inline long original_{name} = (getBase() + {addr} + exists_{name});
 __attribute__((naked)) inline void final_{name}() {{
+	__asm volatile ("mov x10, x8\\n");
 	__asm volatile (
         "{string}"
         "ldr x9, %[t]\\n"
