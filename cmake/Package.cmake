@@ -4,7 +4,7 @@ set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME "DEFAULT")
 function(enzyme_package target)
 	file(GLOB app_folder "${ENZYME_UNZIPPED_FOLDER}/Payload/*.app")
 	get_filename_component(app_name ${app_folder} NAME)
-	set(bin_folder ${Enzyme_BINARY_DIR}/bin)
+	set(bin_folder ${Enzyme_BINARY_DIR}/enzyme_bin)
 
 	add_custom_target(EnzymePackage ALL
 		BYPRODUCTS ${CMAKE_BINARY_DIR}/${ENZYME_BINARY_NAME}.ipa
