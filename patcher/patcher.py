@@ -121,7 +121,7 @@ class Patcher(object):
 		self.cs = Cs(CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN)
 	def patch(self, addr, new):
 		try:
-			self.patches.append((addr, bytes(self.ks.asm(new)[0])))
+			self.patches.append((addr, bytes(self.ks.asm(new,addr)[0])))
 		except:
 			print(new)
 			raise
