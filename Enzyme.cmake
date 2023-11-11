@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.18.0 FATAL_ERROR)
 
 # iOS Development requires clang
 if (NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
