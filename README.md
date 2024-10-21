@@ -4,7 +4,7 @@ Enzyme is a jailbreak-free iOS code injection framework that allows you to stati
 
 ## How do i use this?
 
-### Enzyme is currently untested on windows. If you encounter issues please contact me on discord: camila314#4124
+### Enzyme is currently untested on windows.
 
 Enzyme is a CMake utility. You include the `Enzyme.cmake` file into your own project. Check the example folder for how to set everything up. Hopefully documentation is coming soon, but I don't like writing docs so it might take a little bit.
 
