@@ -1,6 +1,12 @@
 #include <bootloader.hpp>
+#include "breakpoint_hooks.h"
 
-// Hook function defined in patcher/main.py
+
 void $CCScheduler_update(void* schedulerObject, float deltaTime) {
-	CCScheduler_update(schedulerObject, deltaTime / 2);
+    static void* original = nullptr;
+    if (!original) {
+        CCScheduler_update(schedulerObject, deltaTime / 2);
+        return;
+    }
+    ((void(*)(void*, float))original)(schedulerObject, deltaTime / 2);
 }
